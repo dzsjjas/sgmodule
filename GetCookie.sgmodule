@@ -11,5 +11,9 @@ JD_DailyBonus_cookie = type=http-request,pattern=https:\/\/api\.m\.jd\.com\/clie
 10010_activity_cookie = type=http-request,pattern=^https:\/\/act.10010.com\/SigninApp\/signin\/querySigninActivity.htm,script-path=https://raw.githubusercontent.com/dzsjjas/scripts/master/10010/10010.cookie.js
 10010_sign_cookie = type=http-request,pattern=^https:\/\/act.10010.com\/SigninApp(.*?)\/signin\/daySign.do,script-path=https://raw.githubusercontent.com/dzsjjas/scripts/master/10010/10010.cookie.js
 
+http-request ^https:\/\/api\.1sapp\.com\/sign\/info? script-path=https://raw.githubusercontent.com/dzsjjas/scripts/master/qtt/qtt.cookie.js
+http-request ^https:\/\/api\.1sapp\.com\/content\/readV2? script-path=https://raw.githubusercontent.com/dzsjjas/scripts/master/qtt/qtt.cookie.js
+http-request ^https:\/\/api\.1sapp\.com\/x\/feed\/getReward? script-path=https://raw.githubusercontent.com/dzsjjas/scripts/master/qtt/qtt.cookie.js
+
 [MITM]
-hostname = %APPEND% api.m.jd.com, wapside.189.cn:9001, act.10010.com, m.client.10010.com
+hostname = %APPEND% api.m.jd.com, wapside.189.cn:9001, act.10010.com, m.client.10010.com, api.1sapp.com
