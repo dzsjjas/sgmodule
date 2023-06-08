@@ -1,8 +1,10 @@
 {
-    "port": 443,
-    "token": ["mima"],
+    "server": "[::]:443",
+    "users": {
+        "00000000-0000-0000-0000-000000000001": "PASSWORD_1"
+    },
     "certificate": "/root/TSLKey/tsl.cer",
     "private_key": "/root/TSLKey/tsl.key",
-    "congestion_controller": "bbr",
+    "congestion_controller": "cubic",
     "alpn": ["h3"]
 }
