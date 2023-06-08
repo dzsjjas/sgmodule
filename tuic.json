@@ -5,6 +5,6 @@
     },
     "certificate": "/root/TSLKey/tsl.cer",
     "private_key": "/root/TSLKey/tsl.key",
-    "congestion_controller": "cubic",
+    "congestion_control": "cubic",
     "alpn": ["h3"]
 }
