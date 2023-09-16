@@ -70,6 +70,7 @@ async function getDataInfo(url) {
     console.log(err);
     return;
   }
+  console.log("data:"+data);
   return JSON.parse(data);
 }
 
