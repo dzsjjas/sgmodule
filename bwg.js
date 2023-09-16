@@ -1,7 +1,7 @@
 (async () => {
   let info = await getDataInfo();
   if (!info) $done();
-  let resetDayLeft = getRmainingDays(13));
+  let resetDayLeft = getRmainingDays(13);
   console.log("info:"+info);
   console.log("======================");
   let used = info["data_counter"];
