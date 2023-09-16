@@ -47,7 +47,7 @@ function getUserInfo() {
         reject(resp.status);
         return;
       }
-      resolve(data);
+      resolve(resp.body);
       return;
     })
   );
