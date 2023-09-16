@@ -55,6 +55,7 @@ function getUserInfo(url) {
         return;
       }
       resolve(resp.body);
+      return;
     })
   );
 }
