@@ -53,7 +53,8 @@ async function getDataInfo(url) {
         reject(resp.status);
         return;
       }
-      return JSON.parse(data);
+      resolve(JSON.parse(data));
+      return;
     })
   );
 }
