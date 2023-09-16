@@ -4,9 +4,12 @@ let args = getArgs();
   let info = await getDataInfo(args.url);
   if (!info) $done();
   let resetDayLeft = getRmainingDays(parseInt(args["reset_day"]));
-
+  console.log("info:"+info);
+  console.log("======================");
   let used = info["data_counter"];
   let total = info["plan_monthly_data"];
+  console.log("used:"+used);
+  console.log("total:"+total);
   let expire = args.expire || info["data_next_reset"];
   let content = [`用量：${bytesToSize(used)} | ${bytesToSize(total)}`];
 
