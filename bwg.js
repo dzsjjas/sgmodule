@@ -41,7 +41,7 @@ function getArgs() {
   );
 }
 
-async function getDataInfo(url) {
+function getUserInfo(url) {
   let method = args.method || "get";
   return new Promise((resolve, reject) =>
     $httpClient[method](url, (err, resp, data) => {
@@ -53,10 +53,21 @@ async function getDataInfo(url) {
         reject(resp.status);
         return;
       }
-      resolve(JSON.parse(data));
+      resolve(data);
       return;
     })
   );
+}
+
+async function getDataInfo(url) {
+  const [err, data] = await getUserInfo(url)
+    .then((data) => [null, data])
+    .catch((err) => [err, null]);
+  if (err) {
+    console.log(err);
+    return;
+  }
+  return JSON.parse(data);
 }
 
 function getRmainingDays(resetDay) {
