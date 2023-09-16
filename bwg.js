@@ -1,7 +1,5 @@
-let args = getArgs();
-
 (async () => {
-  let info = await getDataInfo(args.url);
+  let info = await getDataInfo($argument);
   if (!info) $done();
   let resetDayLeft = getRmainingDays(parseInt(args["reset_day"]));
   console.log("info:"+info);
@@ -10,7 +8,7 @@ let args = getArgs();
   let total = info["plan_monthly_data"];
   console.log("used:"+used);
   console.log("total:"+total);
-  let expire = args.expire || info["data_next_reset"];
+  let expire = info["data_next_reset"];
   let content = [`用量：${bytesToSize(used)} | ${bytesToSize(total)}`];
 
   if (resetDayLeft) {
@@ -34,15 +32,6 @@ let args = getArgs();
     "icon-color": args.color || "#007aff",
   });
 })();
-
-function getArgs() {
-  return Object.fromEntries(
-    $argument
-      .split("&")
-      .map((item) => item.split("="))
-      .map(([k, v]) => [k, decodeURIComponent(v)])
-  );
-}
 
 function getUserInfo(url) {
   let method = args.method || "get";
