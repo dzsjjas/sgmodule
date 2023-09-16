@@ -5,9 +5,9 @@ let args = getArgs();
   if (!info) $done();
   let resetDayLeft = getRmainingDays(parseInt(args["reset_day"]));
 
-  let used = info.data_counter;
-  let total = info.plan_monthly_data;
-  let expire = args.expire || info.data_next_reset;
+  let used = info["data_counter"];
+  let total = info["plan_monthly_data"];
+  let expire = args.expire || info["data_next_reset"];
   let content = [`用量：${bytesToSize(used)} | ${bytesToSize(total)}`];
 
   if (resetDayLeft) {
