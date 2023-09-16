@@ -41,11 +41,10 @@ function getArgs() {
   );
 }
 
-function getUserInfo(url) {
+async function getDataInfo(url) {
   let method = args.method || "get";
-  let request = { headers: {}, url };
   return new Promise((resolve, reject) =>
-    $httpClient[method](request, (err, resp) => {
+    $httpClient[method](url, (err, resp, data) => {
       if (err != null) {
         reject(err);
         return;
@@ -54,26 +53,8 @@ function getUserInfo(url) {
         reject(resp.status);
         return;
       }
-      resolve(resp.body);
-      return;
+      return JSON.parse(data);
     })
-  );
-}
-
-async function getDataInfo(url) {
-  const [err, data] = await getUserInfo(url)
-    .then((data) => [null, data])
-    .catch((err) => [err, null]);
-  if (err) {
-    console.log(err);
-    return;
-  }
-
-  return Object.fromEntries(
-    data
-      .match(/\w+=[\d.eE+-]+/g)
-      .map((item) => item.split("="))
-      .map(([k, v]) => [k, Number(v)])
   );
 }
 
