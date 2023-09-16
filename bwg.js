@@ -1,7 +1,7 @@
 (async () => {
   let info = await getDataInfo();
   if (!info) $done();
-  let resetDayLeft = getRmainingDays(parseInt(args["reset_day"]));
+  let resetDayLeft = getRmainingDays(13));
   console.log("info:"+info);
   console.log("======================");
   let used = info["data_counter"];
@@ -26,17 +26,17 @@
   minutes = minutes > 9 ? minutes : "0" + minutes;
 
   $done({
-    title: `${args.title} | ${hour}:${minutes}`,
+    title: `BWG | ${hour}:${minutes}`,
     content: content.join("\n"),
-    icon: args.icon || "airplane.circle",
-    "icon-color": args.color || "#007aff",
+    icon: "airplane.circle",
+    "icon-color": "#007aff",
   });
 })();
 
 function getUserInfo() {
   let url = $argument;
   console.log('url:'+url);
-  let method = args.method || "get";
+  let method = "get";
   return new Promise((resolve, reject) =>
     $httpClient[method](url, (err, resp, data) => {
       if (err != null) {
