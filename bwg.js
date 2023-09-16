@@ -1,5 +1,5 @@
 (async () => {
-  let info = await getDataInfo($argument);
+  let info = await getDataInfo();
   if (!info) $done();
   let resetDayLeft = getRmainingDays(parseInt(args["reset_day"]));
   console.log("info:"+info);
@@ -33,7 +33,9 @@
   });
 })();
 
-function getUserInfo(url) {
+function getUserInfo() {
+  let url = $argument;
+  console.log('url:'+url);
   let method = args.method || "get";
   return new Promise((resolve, reject) =>
     $httpClient[method](url, (err, resp, data) => {
