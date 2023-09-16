@@ -36,9 +36,8 @@
 function getUserInfo() {
   let url = $argument;
   console.log('url:'+url);
-  let method = "get";
   return new Promise((resolve, reject) =>
-    $httpClient[method](url, (err, resp, data) => {
+    $httpClient.get(url, (err, resp, data) => {
       if (err != null) {
         reject(err);
         return;
@@ -47,7 +46,7 @@ function getUserInfo() {
         reject(resp.status);
         return;
       }
-      resolve(resp.body);
+      resolve(data);
       return;
     })
   );
