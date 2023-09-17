@@ -2,12 +2,8 @@
   let info = await getDataInfo();
   if (!info) $done();
   let resetDayLeft = getRmainingDays(13);
-  console.log("info:"+info);
-  console.log("======================");
   let used = info["data_counter"];
   let total = info["plan_monthly_data"];
-  console.log("used:"+used);
-  console.log("total:"+total);
   let expire = info["data_next_reset"];
   let content = [`用量：${bytesToSize(used)} | ${bytesToSize(total)}`];
 
@@ -35,7 +31,6 @@
 
 function getUserInfo() {
   let url = $argument;
-  console.log('url:'+url);
   return new Promise((resolve, reject) =>
     $httpClient.get(url, (err, resp, data) => {
       if (err != null) {
@@ -60,7 +55,6 @@ async function getDataInfo(url) {
     console.log(err);
     return;
   }
-  console.log("data:"+data);
   return JSON.parse(data);
 }
 
